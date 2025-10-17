@@ -19,7 +19,7 @@
     {
       "js": ["scripts/youtube.js"],
       "matches": [
-        "https://m.youtube.com/*",
+        "https://youtube.com/*",
         "https://www.youtube.com/*"
       ]
     }
