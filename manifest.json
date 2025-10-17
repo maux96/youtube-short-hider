@@ -1,0 +1,33 @@
+{
+  "name": "ElementRemover",
+  "description": "Basic youtube reels remover.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png",
+    "default_title": "YoutubeReelsRemover"
+  },
+
+  "content_scripts": [
+    {
+      "js": ["scripts/m.youtube.js"],
+      "matches": [
+        "https://m.youtube.com/*"
+      ]
+    },
+    {
+      "js": ["scripts/youtube.js"],
+      "matches": [
+        "https://m.youtube.com/*",
+        "https://www.youtube.com/*"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["scripts/nodesRemover.mjs"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
