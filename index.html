@@ -1,12 +1,10 @@
 <html>
   <body>
     <div class="container">
-      <img src="icon.png">
-      <h1 class="nowrap">Reels remover</h1> 
+      <img id="popup-image" src="iconoff.png">
+      <h1 class="nowrap">Reels Remover</h1> 
       <div>
         <button id="refresh-button">Refresh</button>
-        <div id="test-field">
-        </div>
       </div>
     </div>
 
@@ -22,9 +20,27 @@
     }
 
     .container {
-      content-align: center;
+      text-align: center;
     }
     
+    #status-text {
+      font-size: smaller;
+    }
+
+    #refresh-button {
+      background-color: black;
+      border-radius: 5px;
+      border: orange 3px solid;
+      padding: 5px;
+      color: orange;
+      font-weight: bolder;
+      width: 100%;
+    }
+    #refresh-button:hover {
+      background-color: orange;
+      color: black;
+    }
+
     .nowrap  {
       white-space: nowrap;
     }

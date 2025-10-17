@@ -12,6 +12,8 @@ function verifyForShorts(selectorFunction) {
 export async function startRemovingElements(selectorFunction, timeout=TIMEOUT_TIME) {
   while (true) {
       await new Promise((resolve) => { setTimeout(resolve, timeout) });
-      verifyForShorts(selectorFunction);
+
+      const value = await chrome.storage.local.get(["active"])
+      value["active"] && verifyForShorts(selectorFunction);
   }
 }
