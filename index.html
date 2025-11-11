@@ -4,6 +4,12 @@
       <img id="popup-image" src="iconoff.png">
       <h1 class="nowrap">Reels Remover</h1> 
       <div>
+        <div id="options">
+          <div style="display: flex; flex-direction: row; place-content: start; place-items: center;">
+            <input type="checkbox" name="oneTimeExecution" id="one-time-execution-checkbox">
+            <label for="oneTimeExecution">One Time Execution</label>
+          </div>
+        </div>
         <button id="refresh-button">Refresh</button>
       </div>
     </div>
@@ -17,6 +23,11 @@
       background: black;
       color: white;
       padding: 50px;
+    }
+
+    #options {
+      padding-top: 10px;
+      padding-bottom: 20px;
     }
 
     .container {

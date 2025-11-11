@@ -1,7 +1,9 @@
 
 function main(){
   document.getElementById("refresh-button").onclick = onRefreshButtonClicked; 
-  refreshImage()
+  document.getElementById("one-time-execution-checkbox").onchange = onChangeOneTimeExecution; 
+
+  refreshVisualValues()
 }
 
 async function swapState () {
@@ -15,18 +17,25 @@ async function swapState () {
   console.log(value)
 }
 
-async function refreshImage() {
-  const isActive = (await chrome.storage.local.get(["active"]))["active"];
-  const imgPath = isActive ? "iconon.png" : "iconoff.png";
+async function refreshVisualValues() {
+  const obj = await chrome.storage.local.get();
+  const imgPath = obj["active"] ? "iconon.png" : "iconoff.png";
   document.getElementById("popup-image").src = imgPath;
-  document.getElementById("refresh-button").textContent = isActive ? "Disable" : "Enable"
+  document.getElementById("refresh-button").textContent = obj["active"] ? "Disable" : "Enable"
+
+  document.getElementById("one-time-execution-checkbox").checked = obj["oneTimeExecution"]; 
+
   chrome.action.setIcon({path: imgPath});
 }
 
 
 async function onRefreshButtonClicked()  {
   await swapState();
-  await refreshImage();
+  await refreshVisualValues();
+}
+
+async function onChangeOneTimeExecution(event) {
+  await chrome.storage.local.set({ oneTimeExecution: event.target.checked });
 }
 
 
