@@ -8,7 +8,7 @@
   utils.startRemovingElements(() => {
     const posibleElements = [...document.getElementsByTagName("ytd-rich-shelf-renderer")];
     return posibleElements.filter(el => el.hasAttribute("is-shorts"));
-  }, 3000);
+  });
 })()
 
 

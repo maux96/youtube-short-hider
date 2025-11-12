@@ -4,13 +4,27 @@
       <img id="popup-image" src="iconoff.png">
       <h1 class="nowrap">Reels Remover</h1> 
       <div>
+
         <div id="options">
+
+          <!-- timeout -->
+          <div style="display: flex; flex-direction: column; place-content: start; place-items: start;">
+            <label for="timeout" id="timeout-label">Timeout ()</label>
+            <div style="display: flex; place-content: space-between; place-items: center;">
+              <label>1000</label>
+              <input type="range" name="timeout" id="timeout-value" min="1000" max="20000" style="width:50%;">
+              <label>20000</label>
+            </div>
+          </div>
+
+          <!-- one time execution -->
           <div style="display: flex; flex-direction: row; place-content: start; place-items: center;">
             <input type="checkbox" name="oneTimeExecution" id="one-time-execution-checkbox">
             <label for="oneTimeExecution">One Time Execution</label>
           </div>
+
         </div>
-        <button id="refresh-button">Refresh</button>
+        <button id="refresh-button">XXX</button>
       </div>
     </div>
 
@@ -26,6 +40,11 @@
     }
 
     #options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      place-items: start;
+
       padding-top: 10px;
       padding-bottom: 20px;
     }

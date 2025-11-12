@@ -8,7 +8,7 @@
   utils.startRemovingElements(() => [
     ...document.getElementsByClassName("ytGridShelfViewModelHost"),
     ...document.getElementsByTagName("ytm-reel-shelf-renderer"),
-  ], 3000);
+  ]);
 })()
 
 

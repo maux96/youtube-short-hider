@@ -1,5 +1,5 @@
 
-const TIMEOUT_TIME = 2000
+const DEFAULT_TIMEOUT_TIME = 2000
 
 function verifyForShorts(selectorFunction) {
   const elems = selectorFunction()
@@ -10,11 +10,13 @@ function verifyForShorts(selectorFunction) {
   }
 }
 
-export async function startRemovingElements(selectorFunction, timeout=TIMEOUT_TIME) {
+export async function startRemovingElements(selectorFunction) {
   while (true) {
+      const value = await chrome.storage.local.get()
+      const timeout = value['timeout'] ?? DEFAULT_TIMEOUT_TIME
+      
       await new Promise((resolve) => { setTimeout(resolve, timeout) });
 
-      const value = await chrome.storage.local.get()
       value["active"] && verifyForShorts(selectorFunction);
 
       if (value["oneTimeExecution"]) {
