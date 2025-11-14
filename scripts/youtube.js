@@ -6,8 +6,13 @@
 
   console.log("Removing shorts from webdesktop youtube.")
   utils.startRemovingElements(() => {
-    const posibleElements = [...document.getElementsByTagName("ytd-rich-shelf-renderer")];
-    return posibleElements.filter(el => el.hasAttribute("is-shorts"));
+    const pathname = window.location.pathname
+    if (/\/watch/.test(pathname)) {
+      return [...document.getElementsByTagName("ytd-reel-shelf-renderer")]
+    } else {
+      return [...document.getElementsByTagName("ytd-rich-shelf-renderer")]
+                                    .filter(el => el.hasAttribute("is-shorts"));
+    }
   });
 })()
 
