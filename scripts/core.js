@@ -1,6 +1,7 @@
 
 function main(){
   document.getElementById("refresh-button").onclick = onRefreshButtonClicked; 
+  document.getElementById("remove-posts").onchange = onChangeRemovePosts; 
   document.getElementById("one-time-execution-checkbox").onchange = onChangeOneTimeExecution; 
   document.getElementById("timeout-value").oninput = onChangeTimeout; 
 
@@ -32,6 +33,7 @@ async function refreshVisualValues() {
   document.getElementById("refresh-button").textContent = obj["active"] ? "Disable" : "Enable";
 
   document.getElementById("one-time-execution-checkbox").checked = obj["oneTimeExecution"]; 
+  document.getElementById("remove-posts").checked = obj["removePosts"]; 
   document.getElementById("timeout-value").value = obj["timeout"]; 
   document.getElementById("timeout-label").innerText = `Timeout: (${obj["timeout"]})` 
 
@@ -47,6 +49,11 @@ async function onRefreshButtonClicked()  {
 async function onChangeOneTimeExecution(event) {
   const val = event.target.checked;
   await chrome.storage.local.set({ oneTimeExecution: val });
+}
+
+async function onChangeRemovePosts(event) {
+  const val = event.target.checked;
+  await chrome.storage.local.set({ removePosts: val });
 }
 
 async function onChangeTimeout(event) {
